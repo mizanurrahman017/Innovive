@@ -18,7 +18,7 @@ const Footer = () => {
           <div className="flex-1 space-y-4">
             <div className="flex items-center gap-2">
               <img
-                src="/public/WhatsApp Image 2026-01-03 at 11.28.37 PM.jpeg"
+                src="/WhatsApp Image 2026-01-03 at 11.28.37 PM.jpeg"
                 alt="Innovive's Logo"
                 className="w-12 h-12 rounded-full"
               />

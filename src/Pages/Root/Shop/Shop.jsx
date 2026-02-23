@@ -43,7 +43,6 @@ const Shop = () => {
     setOrders(savedOrders);
   }, []);
 
-  // Filter products by selected category
   const filteredProducts = selectedCategory === "All Categories"
     ? products
     : products.filter(p => p.category === selectedCategory);
@@ -53,7 +52,6 @@ const Shop = () => {
       alert("❌ Please fill all fields");
       return;
     }
-
     const newOrder = {
       id: Date.now(),
       product: selectedProduct,
@@ -61,11 +59,9 @@ const Shop = () => {
       date: new Date().toLocaleString(),
       status: "Paid (Demo)",
     };
-
     const updatedOrders = [...orders, newOrder];
     setOrders(updatedOrders);
     localStorage.setItem("orders", JSON.stringify(updatedOrders));
-
     alert("🎉 Payment Successful & Order Placed!");
     setShowForm(false);
     setSelectedProduct(null);
@@ -73,14 +69,15 @@ const Shop = () => {
   };
 
   return (
-    <div className="p-8 bg-gray-100 min-h-screen flex gap-6">
+    <div className="p-4 md:p-8 bg-gray-100 min-h-screen flex flex-col md:flex-row gap-6">
+      
       {/* Categories */}
-      <div className="w-64 bg-white p-4 rounded shadow space-y-2">
+      <div className="w-full md:w-64 bg-white p-4 rounded shadow mb-4 md:mb-0 flex md:flex-col overflow-x-auto md:overflow-visible gap-2">
         {categories.map(cat => (
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}
-            className={`w-full text-left px-2 py-1 rounded hover:bg-pink-500 hover:text-white ${
+            className={`whitespace-nowrap px-2 py-1 rounded hover:bg-pink-500 hover:text-white ${
               selectedCategory === cat ? "bg-pink-500 text-white" : ""
             }`}
           >
@@ -89,8 +86,8 @@ const Shop = () => {
         ))}
       </div>
 
-      {/* Main Products Grid */}
-      <div className="flex-1 grid md:grid-cols-4 gap-6">
+      {/* Products Grid */}
+      <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredProducts.map(product => (
           <div
             key={product.id}
@@ -117,7 +114,7 @@ const Shop = () => {
                 setActiveImage(product.images[0]);
                 setShowForm(true);
               }}
-              className="mt-2 bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700"
+              className="mt-2 bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700 w-full"
             >
               Order Now
             </button>
@@ -125,25 +122,24 @@ const Shop = () => {
         ))}
       </div>
 
-      {/* Order Form Modal */}
+      {/* Modal */}
       {showForm && selectedProduct && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-xl w-96 relative">
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50 p-4">
+          <div className="bg-white p-6 rounded-xl w-full max-w-md relative">
             <button onClick={() => setShowForm(false)} className="absolute top-2 right-2 text-red-500">✕</button>
             <h2 className="text-xl font-bold mb-3">Checkout - {selectedProduct.name}</h2>
 
-            {/* 3 Images Gallery */}
             <div className="overflow-hidden rounded mb-2">
               <img src={activeImage} alt="" className="w-full h-48 object-contain transition-transform duration-300 hover:scale-110" />
             </div>
-            <div className="flex gap-2 mb-4">
+            <div className="flex gap-2 mb-4 overflow-x-auto">
               {selectedProduct.images.map((img, idx) => (
                 <img
                   key={idx}
                   src={img}
                   alt=""
                   onClick={() => setActiveImage(img)}
-                  className="w-16 h-16 object-contain border cursor-pointer"
+                  className={`w-16 h-16 object-contain border cursor-pointer ${img === activeImage ? "border-blue-500" : "border-gray-200"}`}
                 />
               ))}
             </div>
