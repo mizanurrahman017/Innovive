@@ -1,24 +1,14 @@
-import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router";
-import Navbar from "./Components/Header/Navbar";
-import Login from "./Pages/Root/Login/Login";
+// src/App.jsx
+import React from "react";
+import { UserProvider } from "./Context/UserContext";
+import { RouterProvider } from "react-router";
+import { router } from "./Routes/Routes";
 
 function App() {
-
-  const [user, setUser] = useState(() => {
-    const savedUser = localStorage.getItem("currentUser");
-    return savedUser ? JSON.parse(savedUser) : null;
-  });
-
   return (
-    <BrowserRouter>
-      <Navbar user={user} setUser={setUser} />
-
-      <Routes>
-        <Route path="/login" element={<Login setUser={setUser} />} />
-        <Route path="/" element={<h1 className="text-center mt-10">Home Page</h1>} />
-      </Routes>
-    </BrowserRouter>
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
   );
 }
 

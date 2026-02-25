@@ -1,3 +1,4 @@
+// src/Routes/Routes.jsx
 import React from 'react';
 import { createBrowserRouter } from "react-router";
 import Root from '../Pages/Root/Root';
@@ -9,42 +10,36 @@ import Login from '../Pages/Root/Login/Login';
 import Register from '../Pages/Root/Register/Register';
 import Cart from '../Pages/Root/Cart/Cart';
 
-
-
-
-export  const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     path: "/",
-    Component:Root,
-    errorElement:<ErrorPage></ErrorPage>,
-    children:[
+    element: <Root />,                // Parent layout
+    errorElement: <ErrorPage />,
+    children: [
       {
-        index:true,
-        path:"/",
-        Component:Home,
-
+        index: true,                  // / → Home page
+        element: <Home />
       },
       {
-        path:"shop",
-        element:<Shop></Shop>
+        path: "shop",                 // /shop
+        element: <Shop />
       },
       {
-        path:"/orders",
-        element:<OrderHistory></OrderHistory>
+        path: "orders",               // /orders
+        element: <OrderHistory />
       },
       {
-        path:"/login",
-        element:<Login></Login>
+        path: "login",                // /login
+        element: <Login />
       },
       {
-        path:"register",
-        element:<Register></Register>
+        path: "register",             // /register
+        element: <Register />
       },
       {
-        path:"cart",
-        element:<Cart></Cart>
+        path: "cart",                 // /cart
+        element: <Cart />
       }
-
     ]
-  },
+  }
 ]);
