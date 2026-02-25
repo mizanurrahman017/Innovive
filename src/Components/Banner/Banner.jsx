@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { FaChevronRight, FaChevronLeft, FaChevronRight as ArrowRight } from "react-icons/fa";
+import React, { useEffect, useState, useCallback } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const Banner = ({ products = [], setFilteredProducts }) => {
+const Banner = () => {
   const images = [
     "/banner1.png",
     "/banner2.jpg",
@@ -10,109 +10,73 @@ const Banner = ({ products = [], setFilteredProducts }) => {
     "/banner5.jpg",
   ];
 
-  const categories = [
-    "New Arrival",
-    "Airpods",
-    "Clock",
-    "Lamp",
-    "watch",
-  ];
-
   const [current, setCurrent] = useState(0);
+
+  // Next Slide
+  const nextSlide = useCallback(() => {
+    setCurrent((prev) => (prev + 1) % images.length);
+  }, [images.length]);
+
+  // Previous Slide
+  const prevSlide = () => {
+    setCurrent((prev) =>
+      prev === 0 ? images.length - 1 : prev - 1
+    );
+  };
 
   // Auto Slide
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
     }, 3000);
+
     return () => clearInterval(interval);
-  }, [current]);
-
-  const nextSlide = () => {
-    setCurrent((prev) => (prev + 1) % images.length);
-  };
-
-  const prevSlide = () => {
-    setCurrent((prev) => (prev - 1 + images.length) % images.length);
-  };
-
-  const handleCategoryClick = (category) => {
-    if (setFilteredProducts) {
-      const filtered = products.filter(
-        (p) => p.category === category
-      );
-      setFilteredProducts(filtered);
-    }
-  };
+  }, [nextSlide]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-6">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px] overflow-hidden">
 
-        {/* Left Categories */}
-        <div className="bg-white shadow-md rounded-md p-4 md:col-span-1">
-          <h2 className="bg-pink-600 text-white px-4 py-2 rounded-md font-semibold mb-3">
-            All Categories
-          </h2>
+      {/* Images */}
+      {images.map((img, index) => (
+        <img
+          key={index}
+          src={img}
+          alt="banner"
+          className={`absolute w-full h-full object-cover transition-opacity duration-1000 ${
+            index === current ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      ))}
 
-          <ul className="space-y-3">
-            {categories.map((cat, index) => (
-              <li
-                key={index}
-                onClick={() => handleCategoryClick(cat)}
-                className="flex justify-between items-center text-gray-700 hover:text-pink-600 cursor-pointer transition"
-              >
-                {cat}
-                <FaChevronRight size={12} />
-              </li>
-            ))}
-          </ul>
-        </div>
+      {/* Left Button */}
+      <button
+        onClick={prevSlide}
+        className="absolute top-1/2 left-4 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full transition"
+      >
+        <FaChevronLeft size={20} />
+      </button>
 
-        {/* Right Slider */}
-        <div className="relative md:col-span-3 rounded-md overflow-hidden shadow-md bg-white flex items-center justify-center min-h-[220px] md:min-h-[400px]">
+      {/* Right Button */}
+      <button
+        onClick={nextSlide}
+        className="absolute top-1/2 right-4 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full transition"
+      >
+        <FaChevronRight size={20} />
+      </button>
 
-          {images.map((img, index) => (
-            <img
-              key={index}
-              src={img}
-              alt="Banner"
-              className={`absolute max-h-full max-w-full object-contain transition-opacity duration-1000 ${
-                current === index ? "opacity-100" : "opacity-0"
-              }`}
-            />
-          ))}
-
-          {/* Prev */}
-          <button
-            onClick={prevSlide}
-            className="absolute top-1/2 left-3 -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white"
-          >
-            <FaChevronLeft />
-          </button>
-
-          {/* Next */}
-          <button
-            onClick={nextSlide}
-            className="absolute top-1/2 right-3 -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white"
-          >
-            <ArrowRight />
-          </button>
-
-          {/* Dots */}
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
-            {images.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrent(index)}
-                className={`w-3 h-3 rounded-full ${
-                  current === index ? "bg-black" : "bg-gray-400"
-                }`}
-              />
-            ))}
-          </div>
-
-        </div>
+      {/* Dot Indicators */}
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-3">
+        {images.map((_, index) => (
+          <div
+            key={index}
+            onClick={() => setCurrent(index)}
+            className={`w-3 h-3 rounded-full cursor-pointer transition-all ${
+              index === current
+                ? "bg-white scale-125"
+                : "bg-white/50"
+            }`}
+          />
+        ))}
       </div>
     </div>
   );

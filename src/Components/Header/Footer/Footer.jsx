@@ -31,16 +31,16 @@ const Footer = () => {
             </p>
 
             <div className="flex gap-3 mt-2 text-white">
-              <a href="https://facebook.com" target="_blank" rel="noreferrer">
+              <a href="https://www.facebook.com/innovive333" target="_blank" rel="noreferrer">
                 <FaFacebook size={20} />
               </a>
               <a href="https://youtube.com" target="_blank" rel="noreferrer">
                 <FaYoutube size={20} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer">
+              <a href="https://www.instagram.com/innovive333/" target="_blank" rel="noreferrer">
                 <FaInstagram size={20} />
               </a>
-              <a href="https://tiktok.com" target="_blank" rel="noreferrer">
+              <a href="https://www.tiktok.com/@innovive333" target="_blank" rel="noreferrer">
                 <FaTiktok size={20} />
               </a>
             </div>
@@ -54,10 +54,10 @@ const Footer = () => {
               <ul className="space-y-2 text-gray-300">
                 <li><NavLink to="/" className="hover:text-white transition">Home</NavLink></li>
                 <li><NavLink to="/shop" className="hover:text-white transition">Shop</NavLink></li>
-                <li><NavLink to="/offers" className="hover:text-white transition">Offers</NavLink></li>
-                <li><NavLink to="/top-sales" className="hover:text-white transition">Top Sales</NavLink></li>
-                <li><NavLink to="/all-products" className="hover:text-white transition">All Products</NavLink></li>
-                <li><NavLink to="/become-seller" className="hover:text-white transition">Become a Seller</NavLink></li>
+                <li><NavLink to="/shop" className="hover:text-white transition">Offers</NavLink></li>
+                <li><NavLink to="/shop" className="hover:text-white transition">Top Sales</NavLink></li>
+                <li><NavLink to="/shop" className="hover:text-white transition">All Products</NavLink></li>
+                <li><NavLink to="/shop" className="hover:text-white transition">Become a Seller</NavLink></li>
               </ul>
             </div>
 
@@ -65,10 +65,10 @@ const Footer = () => {
             <div>
               <h3 className="font-semibold mb-3">About Business</h3>
               <ul className="space-y-2 text-gray-300">
-                <li><NavLink to="/about" className="hover:text-white transition">About us</NavLink></li>
-                <li><NavLink to="/contact" className="hover:text-white transition">Contact us</NavLink></li>
-                <li><NavLink to="/privacy" className="hover:text-white transition">Privacy Policy</NavLink></li>
-                <li><NavLink to="/terms" className="hover:text-white transition">Terms & Conditions</NavLink></li>
+                <li><NavLink to="/shop" className="hover:text-white transition">About us</NavLink></li>
+                <li><NavLink to="/shop" className="hover:text-white transition">Contact us</NavLink></li>
+                <li><NavLink to="/shop" className="hover:text-white transition">Privacy Policy</NavLink></li>
+                <li><NavLink to="/shop" className="hover:text-white transition">Terms & Conditions</NavLink></li>
               </ul>
             </div>
 
