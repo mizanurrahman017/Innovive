@@ -53,7 +53,7 @@ const Navbar = ({ cartCount = 0, products = [], setFilteredProducts }) => {
         {/* 🔹 Logo */}
         <Link to="/" className="flex items-center gap-2 text-xl font-bold">
           <img
-            src="/public/WhatsApp Image 2026-01-03 at 11.28.37 PM.jpeg"
+            src="/WhatsApp Image 2026-01-03 at 11.28.37 PM.jpeg"
             alt="Logo"
             className="w-10 h-10 rounded-full"
           />
