@@ -37,7 +37,7 @@ const Shop = () => {
     { id: 15, name: "Arabic Aura Watch", price: 1950, category: "Watch", images: ["/arabic.jpg","/Arabic2.png","/Arabic3.webp"], description: "Luxury Arabic style watch." },
     { id: 16, name: "Pokkie Clock", price: 2300, category: "Clock", images: ["/pokkie clock.jpeg","/pokkie clock 2.jpeg","/pokkie clock 3.jpeg"], description: "Modern clock with fun design." },
     { id: 17, name: "Mini Clock", price: 2600, category: "Clock", images: ["/mini clock.jpg","/miniclock2.jpeg","/mini clock 3.jpeg"], description: "Compact clock with sleek design." },
-    { id: 18, name: "Mini UPS", price: 1100, category: "New Arrival", images: ["/MiniUPS.jpg","/public/Mini UPS 3.webp","/public/Mini UPS 2.webp"], description: "Portable UPS for emergency backup." },
+    { id: 18, name: "Mini UPS", price: 1100, category: "New Arrival", images: ["/MiniUPS.jpg","/Mini UPS 3.webp","/Mini UPS 2.webp"], description: "Portable UPS for emergency backup." },
     { id: 19, name: "Rolex Style Watch", price: 1750, category: "Watch", images: ["/Rolex.jpg","/Rolex2.webp","/Rolex3.webp"], description: "Classic Rolex style watch replica." },
     { id: 20, name: "Mini fan", price: 350, category: "Fan", images: ["/fan.jpeg","/fan2.jpeg","/fan3.jpeg"], description: "Professional mini fan for deep tissue." },
   ];
