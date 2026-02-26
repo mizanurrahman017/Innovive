@@ -4,10 +4,10 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 const Banner = () => {
   const images = [
     "/banner1.png",
-    "/banner2.jpg",
-    "/banner3.avif",
+    "/B massgae.png",
+    "/B ups.png",
     "/banner4.png",
-    "/banner5.jpg",
+    "/B gun.png",
   ];
 
   const [current, setCurrent] = useState(0);
