@@ -7,7 +7,7 @@ const products = [
     price: 890,
     oldPrice: 1080,
     discount: "-190৳",
-    images: ["/apple.jpg", "/public/apple2.jpg", "/public/apple3.jpg"],
+    images: ["/apple.jpg", "/apple.jpg", "/apple.jpg"],
     sold: 5,
   },
   {
@@ -16,7 +16,7 @@ const products = [
     price: 1550,
     oldPrice: 1700,
     discount: "-150৳",
-    images: ["/airpods.jpg", "/public/airpods2.jpg", "/public/airpods3.jpg"],
+    images: ["/airpods.jpg", "/airpods2.webp", "/airpods3.webp"],
     sold: 2,
   },
   {
@@ -25,7 +25,7 @@ const products = [
     price: 1000,
     oldPrice: 2250,
     discount: "-1250৳",
-    images: ["/hoco.jpg", "/public/hoco2.jpg", "/public/hoco3.jpg"],
+    images: ["/hoco.jpg", "/Hoco Headphone2.jpg", "/Hoco Headphone3.jpg"],
     sold: 1,
   },
   {
@@ -34,7 +34,7 @@ const products = [
     price: 500,
     oldPrice: 650,
     discount: "-150৳",
-    images: ["/ultrapods.jpg", "/public/ultrapods2.jpg", "/public/ultrapods3.jpg"],
+    images: ["/ultrapods.jpg", "/Ultrapods 2.png", "/Ultrapods 3.png"],
     sold: 0,
   },
   {
@@ -43,7 +43,7 @@ const products = [
     price: 1000,
     oldPrice: 2250,
     discount: "-1250৳",
-    images: ["/hoco.jpg", "/public/hoco2.jpg", "/public/hoco3.jpg"],
+    images: ["/hoco.jpg", "/Hoco Headphone2.jpg", "/Hoco Headphone3.jpg"],
     sold: 0,
   },
 ];
