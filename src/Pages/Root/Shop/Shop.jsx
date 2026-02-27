@@ -1,7 +1,11 @@
 // src/Pages/Root/Shop/Shop.jsx
 import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router";
 
 const Shop = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [activeImage, setActiveImage] = useState(null);
   const [orders, setOrders] = useState([]);
@@ -16,6 +20,7 @@ const Shop = () => {
   });
 
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const categories = ["All Categories","New Arrival","Airpods","Clock","Fan","Watch"];
 
@@ -23,7 +28,7 @@ const Shop = () => {
     { id: 1, name: "Apple AirPods Pro 2", price: 890, category: "Airpods", images: ["/airpods.jpg","/airpods2.webp","/airpods3.webp"], description: "High-quality wireless earbuds with active noise cancellation." },
     { id: 2, name: "Mini Massager", price: 300, category: "New Arrival", images: ["/mini massager.webp","/mini massager2.jpg","/mini massager3.jpeg"], description: "Portable mini massager to relieve muscle tension anytime." },
     { id: 3, name: "JBL 6 Speaker", price: 1800, category: "New Arrival", images: ["/jblspeaker.webp","/jblspeaker2.jpg","/jblspeaker3.webp"], description: "Portable JBL Bluetooth speaker with deep bass." },
-    { id: 4, name: "Smart Watch", price: 2650, category: "Watch", images: ["/watch.jpeg","/watch2.jpeg","/watch3.jpeg"], description: "Smartwatch with fitness tracking and notifications." },
+    { id: 4, name: "Smart Watch", price: 2650, category: "Watch", images: ["/watch.jpeg","/watch2.jpeg","/watch3.jpg"], description: "Smartwatch with fitness tracking and notifications." },
     { id: 5, name: "Massage Gun", price: 999, category: "New Arrival", images: ["/massage gun.webp","/massgae gun 2.jpeg","/massage gun 3.jpeg"], description: "Deep tissue massage gun for muscle recovery." },
     { id: 6, name: "Ultrapods Max", price: 500, category: "Airpods", images: ["/ultrapods.jpg","/Ultrapods 2.png","/Ultrapods 3.png"], description: "Premium earbuds with ultra bass." },
     { id: 7, name: "Emoji Alarm Clock", price: 1200, category: "Clock", images: ["/EmojiAlarm.webp","/emojclock2.jpeg","/emojialarm 3.webp"], description: "Cute emoji clock to wake you up happily." },
@@ -48,9 +53,19 @@ const Shop = () => {
     setOrders(savedOrders);
   }, []);
 
-  const filteredProducts = selectedCategory === "All Categories"
-    ? products
-    : products.filter((p) => p.category === selectedCategory);
+  // 🔹 URL query থেকে search query live reading
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const q = params.get("search") || "";
+    setSearchQuery(q);
+  }, [location.search]);
+
+  // Filter products by category + live search
+  const filteredProducts = products.filter(p => {
+    const categoryMatch = selectedCategory === "All Categories" || p.category === selectedCategory;
+    const searchMatch = searchQuery.trim() === "" || p.name.toLowerCase().includes(searchQuery.toLowerCase());
+    return categoryMatch && searchMatch;
+  });
 
   // Add to Cart
   const handleAddToCart = () => {
@@ -96,13 +111,41 @@ const Shop = () => {
   return (
     <div className="p-4 md:p-8 bg-gray-100 min-h-screen flex flex-col md:flex-row gap-6 relative">
 
-      {/* Categories */}
-      <div className="w-full md:w-64 bg-white p-4 rounded shadow flex md:flex-col gap-2 overflow-x-auto md:overflow-visible">
+      {/* Sidebar: Desktop Categories + Orders Button */}
+      <div className="hidden md:flex w-64 flex-col gap-3">
+        <button
+          onClick={() => setShowOrdersList(true)}
+          className="bg-pink-600 text-white px-4 py-2 rounded shadow"
+        >
+          🛍️ Orders ({orders.length})
+        </button>
+
+        <div className="bg-white p-4 rounded shadow flex flex-col gap-2 mt-2">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-2 py-1 rounded whitespace-nowrap ${selectedCategory === cat ? "bg-pink-500 text-white" : "hover:bg-pink-500 hover:text-white"}`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Sidebar: Mobile Categories + Orders */}
+      <div className="flex md:hidden overflow-x-auto gap-2 mb-4">
+        <button
+          onClick={() => setShowOrdersList(true)}
+          className="bg-pink-600 text-white px-4 py-2 rounded"
+        >
+          🛍️ Orders ({orders.length})
+        </button>
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}
-            className={`px-2 py-1 rounded whitespace-nowrap ${selectedCategory === cat ? "bg-pink-500 text-white" : "hover:bg-pink-500 hover:text-white"}`}
+            className={`px-2 py-1 rounded whitespace-nowrap ${selectedCategory === cat ? "bg-pink-500 text-white" : "bg-white hover:bg-pink-500 hover:text-white"}`}
           >
             {cat}
           </button>
@@ -159,12 +202,6 @@ const Shop = () => {
         )}
 
       </div>
-
-      {/* Orders Counter */}
-      <h1 className="text-2xl font-bold absolute top-4 right-4 cursor-pointer z-50"
-          onClick={() => setShowOrdersList(true)}>
-        🛍️ Orders: {orders.length}
-      </h1>
 
       {/* Order Form Modal */}
       {showOrderForm && selectedProduct && (
