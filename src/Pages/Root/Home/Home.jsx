@@ -7,12 +7,12 @@ import Speaker from '../../../Components/Speaker/Speaker';
 
 const Home = () => {
     return (
-        <div>
-            <Banner></Banner>
-            <NewArrival></NewArrival>
-            <Airpods></Airpods>
-            <Clock></Clock>
-            <Speaker></Speaker>
+        <div >
+            <Banner />
+            <NewArrival />
+            <Airpods />
+            <Clock />
+            <Speaker />
         </div>
     );
 };
