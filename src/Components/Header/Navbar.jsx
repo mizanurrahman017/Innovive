@@ -74,14 +74,14 @@ const Navbar = ({ cartCount = 0 }) => {
   };
 
   return (
-    <nav className="bg-pink-600 text-white shadow-md relative z-50">
+    <nav className="bg-black text-white shadow-md relative z-50">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 text-2xl font-bold">
           <img
             src="/WhatsApp Image 2026-01-03 at 11.28.37 PM.jpeg"
             alt="Logo"
-            className="w-10 h-10 rounded-full"
+            className="w-10 h-10 rounded-full border-2 border-white"
           />
           INNOVIVE
         </Link>
@@ -201,13 +201,13 @@ const Navbar = ({ cartCount = 0 }) => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden px-4 py-4 bg-pink-600 flex flex-col gap-3 relative" ref={searchRef}>
+        <div className="md:hidden px-4 py-4 bg-black flex flex-col gap-3 relative" ref={searchRef}>
           <input
             type="text"
             placeholder="Search products..."
             value={search}
             onChange={(e) => handleSearchChange(e.target.value)}
-            className="flex-1 px-4 py-2 text-black outline-none rounded-full border border-gray-300"
+            className="flex-1 px-4 py-2 text-white outline-none rounded-full border border-gray-300"
           />
 
           {/* Mobile Suggestion Dropdown */}
