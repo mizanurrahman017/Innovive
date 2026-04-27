@@ -44,7 +44,7 @@ const NewArrival = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-8 py-10">
+    <div className="max-w-7xl mx-auto px-4 md:px-8 py-10 ">
       <h2 className="text-2xl font-bold mb-8">NEW ARRIVAL</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
