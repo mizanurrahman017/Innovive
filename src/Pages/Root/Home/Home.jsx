@@ -7,6 +7,7 @@ import Speaker from '../../../Components/Speaker/Speaker';
 // ami
 // ami holam
 // ami holam developer
+// ami holam developer and frontend 
 
 
 const Home = () => {
