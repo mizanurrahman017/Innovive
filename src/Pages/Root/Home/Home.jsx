@@ -5,7 +5,7 @@ import Airpods from '../../../Components/Airpods/Airpods';
 import Clock from '../../../Components/Clock/Clock';
 import Speaker from '../../../Components/Speaker/Speaker';
 // ami holam developer and frontend and
-
+// ami holam developergit 
 
 const Home = () => {
     return (
