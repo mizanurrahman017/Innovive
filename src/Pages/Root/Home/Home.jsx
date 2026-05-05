@@ -6,7 +6,7 @@ import Clock from '../../../Components/Clock/Clock';
 import Speaker from '../../../Components/Speaker/Speaker';
 // ami holam developer and frontend and
 // ami holam developergit 
-
+// ami holam developergit backend
 const Home = () => {
     return (
         <div >
