@@ -4,9 +4,8 @@ import NewArrival from '../../../Components/NewArrival/NewArrival';
 import Airpods from '../../../Components/Airpods/Airpods';
 import Clock from '../../../Components/Clock/Clock';
 import Speaker from '../../../Components/Speaker/Speaker';
-// ami holam developer and frontend and
-// ami holam developergit 
-// ami holam developergit backend
+
+// ami holam developer fontend
 const Home = () => {
     return (
         <div >
