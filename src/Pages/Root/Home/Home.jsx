@@ -5,7 +5,7 @@ import Airpods from '../../../Components/Airpods/Airpods';
 import Clock from '../../../Components/Clock/Clock';
 import Speaker from '../../../Components/Speaker/Speaker';
 
-// ami holam developer fontend
+// ami holam developer fontend and backend
 const Home = () => {
     return (
         <div >
