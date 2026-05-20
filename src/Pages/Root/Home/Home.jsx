@@ -7,6 +7,7 @@ import Speaker from '../../../Components/Speaker/Speaker';
 
 // ami holam web dev
 // hello ami web developer and backend
+// hello ami web developer and backend but tik moto kam hikte parram na 
 const Home = () => {
     return (
         <div >
