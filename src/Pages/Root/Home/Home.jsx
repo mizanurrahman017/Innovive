@@ -6,6 +6,7 @@ import Clock from '../../../Components/Clock/Clock';
 import Speaker from '../../../Components/Speaker/Speaker';
 
 // developer and backend
+// developer and backend
  
 const Home = () => {
     return (
