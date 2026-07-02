@@ -9,6 +9,7 @@ import Speaker from '../../../Components/Speaker/Speaker';
 // developer and backend
 // developer and backend
 // developer and backend
+// developer and backend
  
 const Home = () => {
     return (
